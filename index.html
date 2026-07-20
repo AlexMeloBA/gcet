@@ -26,11 +26,13 @@
             <nav style="flex: 1; overflow-y: auto; padding-right: 4px;">
                 <ul class="nav-links">
                     <li><a class="nav-item active" onclick="switchPage('dashboard')"><i data-lucide="layout-dashboard" class="nav-icon"></i> Dashboard</a></li>
+                    <li><a class="nav-item" onclick="switchPage('membros')"><i data-lucide="users" class="nav-icon"></i> Membros & Equipes</a></li>
                     <li><a class="nav-item" onclick="switchPage('kanban')"><i data-lucide="kanban" class="nav-icon"></i> Quadro Kanban</a></li>
-                    <li><a class="nav-item" onclick="switchPage('meetings')"><i data-lucide="users" class="nav-icon"></i> Reuniões & Atas</a></li>
+                    <li><a class="nav-item" onclick="switchPage('meetings')"><i data-lucide="video" class="nav-icon"></i> Reuniões & Atas</a></li>
                     <li><a class="nav-item" onclick="switchPage('books')"><i data-lucide="book-open" class="nav-icon"></i> Rodízio de Livros</a></li>
                     <li><a class="nav-item" onclick="switchPage('even3')"><i data-lucide="award" class="nav-icon"></i> Even3 Artigos</a></li>
                     <li><a class="nav-item" onclick="switchPage('events')"><i data-lucide="calendar" class="nav-icon"></i> Cronogramas</a></li>
+                    <li><a class="nav-item" onclick="switchPage('news')"><i data-lucide="newspaper" class="nav-icon"></i> GCET News Jornal</a></li>
                     <li><a class="nav-item" onclick="switchPage('arts')"><i data-lucide="palette" class="nav-icon"></i> Gerador de Artes</a></li>
                     <li><a class="nav-item" onclick="switchPage('settings')"><i data-lucide="settings" class="nav-icon"></i> Configurações & Logs</a></li>
                 </ul>
@@ -47,7 +49,7 @@
                 <div class="user-profile">
                     <div class="user-info">
                         <span class="username">Coordenador GCET</span>
-                        <span class="user-role">Nível 5 (Administrador)</span>
+                        <span class="user-role">Nível 1 (Administrador)</span>
                     </div>
                     <div class="avatar">AD</div>
                 </div>
@@ -96,7 +98,7 @@
                         </div>
                         <div style="margin-top: 1rem; display: flex; gap: 0.75rem;">
                             <button class="btn btn-primary" onclick="switchPage('meetings')">Ir para Reuniões</button>
-                            <button class="btn btn-secondary" onclick="generateAutoNews()"><i data-lucide="newspaper"></i> GCET News Jornal</button>
+                            <button class="btn btn-secondary" onclick="switchPage('news')"><i data-lucide="newspaper"></i> Ver GCET News</button>
                         </div>
                     </div>
 
@@ -110,15 +112,36 @@
                         </div>
                     </div>
                 </div>
+            </section>
 
-                <!-- GCET News Jornal Automático Preview Section -->
-                <div class="glass-card" id="news-journal-box" style="display: none; margin-top: 1.5rem;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">
-                        <h2 style="font-size: 1.2rem; color: var(--success); font-weight: 700; display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="newspaper"></i> GCET News - Boletim do Grupo</h2>
-                        <button class="btn btn-secondary" onclick="printNewsJournal()"><i data-lucide="printer"></i> Imprimir / PDF</button>
+            <!-- MEMBERS & TEAMS REGISTRY PAGE -->
+            <section id="page-membros" class="page-container">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                    <p style="color: var(--text-secondary);">Gerencie o cadastro de membros, equipes predefinidas, funções específicas e o nível de acesso.</p>
+                    <div style="display: flex; gap: 0.75rem;">
+                        <button class="btn btn-secondary" onclick="triggerImportPlanilha()"><i data-lucide="upload"></i> Importar Planilha</button>
+                        <button class="btn btn-primary" onclick="openNewMemberModal()"><i data-lucide="user-plus"></i> Adicionar Membro</button>
                     </div>
-                    <div id="news-journal-content" style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: 8px; padding: 2rem; color: #f3f4f6; font-family: 'Inter', sans-serif;">
-                        <!-- Auto-generated content goes here -->
+                </div>
+
+                <div class="glass-card">
+                    <h3 style="font-size: 1.1rem; margin-bottom: 1rem; color: var(--accent);"><i data-lucide="users"></i> Quadro de Membros Cadastrados</h3>
+                    <div style="overflow-x: auto;">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>E-mail</th>
+                                    <th>Equipe</th>
+                                    <th>Nome da Função</th>
+                                    <th>Nível de Acesso</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="membros-list-tbody">
+                                <!-- Injected -->
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </section>
@@ -321,6 +344,44 @@
                 </div>
             </section>
 
+            <!-- GCET NEWS JORNAL AUTOMÁTICO PAGE -->
+            <section id="page-news" class="page-container">
+                <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 2rem;">
+                    <!-- Configuration Form -->
+                    <div class="glass-card">
+                        <h3 style="font-size: 1.1rem; color: var(--accent); margin-bottom: 1.25rem;"><i data-lucide="sliders"></i> Alimentar Conteúdo do Jornal</h3>
+                        <form onsubmit="saveNewsJournalConfig(event)">
+                            <div class="form-group">
+                                <label>Título da Edição</label>
+                                <input type="text" id="news-cfg-title" class="form-control" value="GCET NEWS - EDIÇÃO JULHO/AGOSTO 2026" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Editorial / Mensagem da Coordenação</label>
+                                <textarea id="news-cfg-message" class="form-control" rows="5" placeholder="Digite a mensagem editorial do jornal...">Este bimestre foi marcado pela aprovação de múltiplos projetos de extensão e consolidação de novas pesquisas no campo do Enoturismo e Hospitalidade.</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Notícias e Destaques Adicionais</label>
+                                <textarea id="news-cfg-notes" class="form-control" rows="4" placeholder="Insira outras conquistas importantes do GCET...">- Publicação do novo capítulo de livro por Marília Cesário.\n- Novos membros integrados com sucesso no onboarding das equipes.</textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 1rem;">
+                                <i data-lucide="refresh-cw"></i> Atualizar Jornal Informativo
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- PDF / Print Preview -->
+                    <div class="glass-card">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">
+                            <h3 style="font-size: 1.1rem; color: var(--success); font-weight: 700;"><i data-lucide="eye"></i> Pré-visualização do GCET News</h3>
+                            <button class="btn btn-primary" onclick="printNewsJournal()"><i data-lucide="printer"></i> Gerar PDF / Imprimir</button>
+                        </div>
+                        <div id="live-news-journal-preview" style="background: white; color: black; border-radius: 8px; padding: 2.5rem; font-family: 'Inter', sans-serif; box-shadow: 0 4px 20px rgba(0,0,0,0.5); min-height: 550px;">
+                            <!-- Dynamically generated printable content -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- ART GENERATOR PAGE -->
             <section id="page-arts" class="page-container">
                 <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Gere automaticamente artes para redes sociais de acordo com os padrões visuais do GCET.</p>
@@ -374,7 +435,6 @@
             <!-- SETTINGS & AUDIT LOGS PAGE -->
             <section id="page-settings" class="page-container">
                 <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 2rem;">
-                    <!-- Membros e ACL -->
                     <div style="display: flex; flex-direction: column; gap: 1.5rem;">
                         <!-- Integração Cloud (Turso + Even3) -->
                         <div class="glass-card">
@@ -402,33 +462,6 @@
                                 </div>
                             </form>
                         </div>
-
-                        <!-- Membros -->
-                        <div class="glass-card">
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-                                <h2 style="font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem; color: var(--accent);"><i data-lucide="shield-check"></i> Gestão de Equipes & Níveis de Acesso (ACL)</h2>
-                                <div style="display: flex; gap: 0.5rem;">
-                                    <button class="btn btn-secondary" onclick="triggerImportPlanilha()"><i data-lucide="upload"></i> Importar Planilha</button>
-                                    <button class="btn btn-primary" onclick="openNewMemberModal()"><i data-lucide="user-plus"></i> Novo Membro</button>
-                                </div>
-                            </div>
-                            <div style="overflow-x: auto; max-height: 350px; overflow-y: auto;">
-                                <table class="data-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Nome</th>
-                                            <th>Equipe</th>
-                                            <th>Função Específica</th>
-                                            <th>Nível (ACL)</th>
-                                            <th>Ações</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="settings-members-tbody">
-                                        <!-- Dynamic Members Inject -->
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
                     </div>
 
                     <!-- Audit Logs -->
@@ -436,7 +469,7 @@
                         <h2 style="font-size: 1.1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; color: var(--danger);">
                             <i data-lucide="activity"></i> Logs do Sistema (Auditoria)
                         </h2>
-                        <div id="system-logs-container" style="display: flex; flex-direction: column; gap: 0.75rem; max-height: 600px; overflow-y: auto; font-size: 0.8rem; font-family: monospace;">
+                        <div id="system-logs-container" style="display: flex; flex-direction: column; gap: 0.75rem; max-height: 450px; overflow-y: auto; font-size: 0.8rem; font-family: monospace;">
                             <!-- System Logs Inject -->
                         </div>
                     </div>
@@ -542,11 +575,11 @@
                 <div class="form-group">
                     <label>Nível de Acesso (ACL)</label>
                     <select id="member-acl" class="form-control">
-                        <option value="1">Nível 1 (Visualizador)</option>
-                        <option value="2">Nível 2 (Membro Geral)</option>
-                        <option value="3">Nível 3 (Editor/Gerenciador de Atividades)</option>
-                        <option value="4">Nível 4 (Coordenador de Equipe)</option>
-                        <option value="5">Nível 5 (Administrador Geral)</option>
+                        <option value="1">Nível 1 (Administrador Geral)</option>
+                        <option value="2">Nível 2 (Chefe de Equipe)</option>
+                        <option value="3">Nível 3 (Subchefe de Equipe)</option>
+                        <option value="4">Nível 4 (Membro de Equipe)</option>
+                        <option value="5">Nível 5 (Estagiário / Colaborador)</option>
                     </select>
                 </div>
                 <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">

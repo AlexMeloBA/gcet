@@ -2,27 +2,30 @@
 
 // ----------------- Real Members & Teams Database (extracted from DOCX) -----------------
 const REAL_MEMBERS = [
-    { id: "u1", name: "Felipe Gomes do Nascimento", email: "felipe.gomes@gcet.com", phone: "+55 83 98888-1001", birthDate: "2000-08-25", team: "Mídias", specificRole: "Coordenador de Mídias / Instagram", acl: 4, status: "ativo" },
-    { id: "u2", name: "Samuel Ribeiro dos Santos", email: "samuel.ribeiro@gcet.com", phone: "+55 83 98888-1002", birthDate: "1999-07-22", team: "Mídias", specificRole: "Design & GCET News", acl: 3, status: "ativo" },
-    { id: "u3", name: "Amanda Sueli Madeira Pereira", email: "amanda.pereira@gcet.com", phone: "+55 83 98888-1003", birthDate: "2001-05-14", team: "Mídias", specificRole: "Demandas Espontâneas", acl: 2, status: "ativo" },
-    { id: "u4", name: "Ailson da Silva Fernandes", email: "ailson.fernandes@gcet.com", phone: "+55 83 98888-1004", birthDate: "2002-12-05", team: "Mídias", specificRole: "Aniversários e Curiosidades", acl: 2, status: "estagiario" },
-    { id: "u5", name: "Kennedy Kaufummam Costa Mafra", email: "kennedy.mafra@gcet.com", phone: "+55 83 98888-1005", birthDate: "2000-03-30", team: "Mídias", specificRole: "Academia.edu", acl: 2, status: "ativo" },
-    { id: "u6", name: "Leylane Meneses Martins", email: "leylane.martins@gcet.com", phone: "+55 83 98888-1006", birthDate: "2001-10-18", team: "Mídias", specificRole: "Acompanhamento de Projetos e Periódicos", acl: 2, status: "ativo" },
+    // Equipe de Mídias
+    { id: "u1", name: "Felipe Gomes do Nascimento", email: "felipe.gomes@gcet.com", phone: "+55 83 98888-1001", birthDate: "2000-08-25", team: "Mídias", specificRole: "Instagram & Curador", acl: 2, status: "ativo" },
+    { id: "u2", name: "Samuel Ribeiro dos Santos", email: "samuel.ribeiro@gcet.com", phone: "+55 83 98888-1002", birthDate: "1999-07-22", team: "Mídias", specificRole: "Design & GCET News", acl: 4, status: "ativo" },
+    { id: "u3", name: "Amanda Sueli Madeira Pereira", email: "amanda.pereira@gcet.com", phone: "+55 83 98888-1003", birthDate: "2001-05-14", team: "Mídias", specificRole: "Demandas Espontâneas", acl: 4, status: "ativo" },
+    { id: "u4", name: "Ailson da Silva Fernandes", email: "ailson.fernandes@gcet.com", phone: "+55 83 98888-1004", birthDate: "2002-12-05", team: "Mídias", specificRole: "Aniversários e Curiosidades", acl: 5, status: "estagiario" },
+    { id: "u5", name: "Kennedy Kaufummam Costa Mafra", email: "kennedy.mafra@gcet.com", phone: "+55 83 98888-1005", birthDate: "2000-03-30", team: "Mídias", specificRole: "Academia.edu", acl: 4, status: "ativo" },
+    { id: "u6", name: "Leylane Meneses Martins", email: "leylane.martins@gcet.com", phone: "+55 83 98888-1006", birthDate: "2001-10-18", team: "Mídias", specificRole: "Acompanhamento de Projetos e Periódicos", acl: 4, status: "ativo" },
     
-    { id: "u7", name: "Netynha Brambilla", email: "netynha.brambilla@gcet.com", phone: "+55 83 98888-1007", birthDate: "1988-06-15", team: "Editorial", specificRole: "Coordenadora Geral / Organização Chamada", acl: 5, status: "ativo" },
-    { id: "u8", name: "Adriana Brambilla", email: "adriana.brambilla@gcet.com", phone: "+55 83 98888-1008", birthDate: "1985-02-10", team: "Editorial", specificRole: "Comunicação Institucional & Autores", acl: 4, status: "ativo" },
-    { id: "u9", name: "Eládio Vanzella", email: "eladio.vanzella@gcet.com", phone: "+55 83 98888-1009", birthDate: "1987-11-20", team: "Editorial", specificRole: "Diagramação & Comunicação Autores", acl: 3, status: "ativo" },
-    { id: "u10", name: "Fernanda Brambilla", email: "fernanda.brambilla@gcet.com", phone: "+55 83 98888-1010", birthDate: "1990-09-08", team: "Editorial", specificRole: "Assessoria Jurídica / Termos de Imagem", acl: 3, status: "ativo" },
-    { id: "u11", name: "Daiko Lima e Silva", email: "daiko.silva@gcet.com", phone: "+55 83 98888-1011", birthDate: "1998-04-12", team: "Editorial", specificRole: "Organizador de Pautas", acl: 2, status: "ativo" },
+    // Equipe Institucional / Editorial
+    { id: "u7", name: "Netynha Brambilla", email: "netynha.brambilla@gcet.com", phone: "+55 83 98888-1007", birthDate: "1988-06-15", team: "Editorial", specificRole: "Coordenadora Geral / Organização Chamada", acl: 1, status: "ativo" }, // Nível 1 - Admin Geral
+    { id: "u8", name: "Adriana Brambilla", email: "adriana.brambilla@gcet.com", phone: "+55 83 98888-1008", birthDate: "1985-02-10", team: "Editorial", specificRole: "Comunicação Institucional & Autores", acl: 2, status: "ativo" }, // Nível 2 - Chefe
+    { id: "u9", name: "Eládio Vanzella", email: "eladio.vanzella@gcet.com", phone: "+55 83 98888-1009", birthDate: "1987-11-20", team: "Editorial", specificRole: "Diagramação & Comunicação Autores", acl: 3, status: "ativo" }, // Nível 3 - Subchefe
+    { id: "u10", name: "Fernanda Brambilla", email: "fernanda.brambilla@gcet.com", phone: "+55 83 98888-1010", birthDate: "1990-09-08", team: "Editorial", specificRole: "Assessoria Jurídica / Termos de Imagem", acl: 4, status: "ativo" },
+    { id: "u11", name: "Daiko Lima e Silva", email: "daiko.silva@gcet.com", phone: "+55 83 98888-1011", birthDate: "1998-04-12", team: "Editorial", specificRole: "Organizador de Pautas", acl: 4, status: "ativo" },
     { id: "u12", name: "Priscila Fernandes Carvalho de Melo", email: "priscila.melo@gcet.com", phone: "+55 83 98888-1012", birthDate: "2000-01-28", team: "Editorial", specificRole: "Gestora de Atas e Frequência", acl: 3, status: "ativo" },
-    { id: "u13", name: "Islaine Santos", email: "islaine.santos@gcet.com", phone: "+55 83 98888-1013", birthDate: "2002-07-30", team: "Editorial", specificRole: "Controle de Prefácios e Apresentações", acl: 2, status: "estagiario" },
-    { id: "u14", name: "Marília Ferreira Paes Cesário", email: "marilia.cesario@gcet.com", phone: "+55 83 98888-1014", birthDate: "1997-09-24", team: "Editorial", specificRole: "Revisora Acadêmica Principal", acl: 3, status: "ativo" },
+    { id: "u13", name: "Islaine Santos", email: "islaine.santos@gcet.com", phone: "+55 83 98888-1013", birthDate: "2002-07-30", team: "Editorial", specificRole: "Controle de Prefácios e Apresentações", acl: 5, status: "estagiario" },
+    { id: "u14", name: "Marília Ferreira Paes Cesário", email: "marilia.cesario@gcet.com", phone: "+55 83 98888-1014", birthDate: "1997-09-24", team: "Editorial", specificRole: "Revisora Acadêmica Principal", acl: 4, status: "ativo" },
     
-    { id: "u15", name: "Alessandra Souza Queiroz Melo", email: "alessandra.melo@gcet.com", phone: "+55 83 98888-1015", birthDate: "1995-10-05", team: "Site", specificRole: "Coordenadora do Site", acl: 4, status: "ativo" },
-    { id: "u16", name: "Cláudia Araújo de Menezes Gonçalves", email: "claudia.martins@gcet.com", phone: "+55 83 98888-1016", birthDate: "1998-06-30", team: "Site", specificRole: "Redatora de Matérias", acl: 2, status: "ativo" },
-    { id: "u17", name: "Simone Neto de Santana Oliveira", email: "simone.oliveira@gcet.com", phone: "+55 83 98888-1017", birthDate: "1996-03-17", team: "Site", specificRole: "Redatora de Matérias", acl: 2, status: "ativo" },
+    // Equipe do Site
+    { id: "u15", name: "Alessandra Souza Queiroz Melo", email: "alessandra.melo@gcet.com", phone: "+55 83 98888-1015", birthDate: "1995-10-05", team: "Site", specificRole: "Coordenadora do Site", acl: 2, status: "ativo" },
+    { id: "u16", name: "Cláudia Araújo de Menezes Gonçalves", email: "claudia.martins@gcet.com", phone: "+55 83 98888-1016", birthDate: "1998-06-30", team: "Site", specificRole: "Redatora de Matérias", acl: 4, status: "ativo" },
+    { id: "u17", name: "Simone Neto de Santana Oliveira", email: "simone.oliveira@gcet.com", phone: "+55 83 98888-1017", birthDate: "1996-03-17", team: "Site", specificRole: "Redatora de Matérias", acl: 4, status: "ativo" },
     { id: "u18", name: "Thyago da Silva Farias", email: "thyago.farias@gcet.com", phone: "+55 83 98888-1018", birthDate: "1997-12-14", team: "Site", specificRole: "Desenvolvimento Operacional", acl: 3, status: "ativo" },
-    { id: "u19", name: "Alex Souza", email: "alex.souza@gcet.com", phone: "+55 83 98888-1019", birthDate: "1994-11-09", team: "Site", specificRole: "Colaborador Técnico Externo", acl: 2, status: "ativo" }
+    { id: "u19", name: "Alex Souza", email: "alex.souza@gcet.com", phone: "+55 83 98888-1019", birthDate: "1994-11-09", team: "Site", specificRole: "Colaborador Técnico Externo", acl: 4, status: "ativo" }
 ];
 
 const REAL_BOOKS = [
@@ -89,14 +92,16 @@ let tursoUrl = localStorage.getItem("gcet_turso_url") || "";
 let tursoToken = localStorage.getItem("gcet_turso_token") || "";
 let even3Token = localStorage.getItem("gcet_even3_token") || "";
 
+// GCET News Editable configs
+let newsTitle = localStorage.getItem("gcet_news_title") || "GCET NEWS - EDIÇÃO BIMESTRAL";
+let newsEditorial = localStorage.getItem("gcet_news_editorial") || "Este bimestre foi marcado pela aprovação de múltiplos projetos de extensão e consolidação de novas pesquisas no campo do Enoturismo e Hospitalidade.";
+let newsNotes = localStorage.getItem("gcet_news_notes") || "- Publicação do novo capítulo de livro por Marília Cesário.\n- Novos membros integrados com sucesso no onboarding das equipes.";
+
 // Generic Turso HTTP execution client
 async function executeTursoQuery(sql, args = []) {
     if (!tursoUrl || !tursoToken) return null;
-    
-    // Convert url from libsql:// to https://
     const httpUrl = tursoUrl.replace("libsql://", "https://");
     const endpoint = `${httpUrl}/v2/pipeline`;
-    
     try {
         const response = await fetch(endpoint, {
             method: "POST",
@@ -114,7 +119,6 @@ async function executeTursoQuery(sql, args = []) {
                 ]
             })
         });
-        
         if (!response.ok) throw new Error(await response.text());
         const data = await response.json();
         return data.results?.[0]?.response?.result;
@@ -135,7 +139,6 @@ function saveState() {
     localStorage.setItem("gcet_logs", JSON.stringify(logs));
     localStorage.setItem("gcet_attendance", JSON.stringify(attendance));
 
-    // Async push to Turso if configured
     if (tursoUrl && tursoToken) {
         executeTursoQuery("INSERT INTO system_logs (user_id, action, details) VALUES (?, ?, ?)", [
             "admin", 
@@ -159,57 +162,14 @@ function logEvent(action, details) {
     renderLogs();
 }
 
-// ----------------- Cloud integration save -----------------
-function saveCloudCredentials(e) {
-    e.preventDefault();
-    tursoUrl = document.getElementById("cfg-turso-url").value.trim();
-    tursoToken = document.getElementById("cfg-turso-token").value.trim();
-    even3Token = document.getElementById("cfg-even3-token").value.trim();
-
-    localStorage.setItem("gcet_turso_url", tursoUrl);
-    localStorage.setItem("gcet_turso_token", tursoToken);
-    localStorage.setItem("gcet_even3_token", even3Token);
-
-    updateCloudStatusDisplay();
-    logEvent("Configurou Nuvem", "Credenciais do Turso DB e Even3 configuradas e testadas.");
-    
-    // Simulate setup tables on Turso if newly connected
-    if (tursoUrl && tursoToken) {
-        executeTursoQuery("CREATE TABLE IF NOT EXISTS system_logs (id INTEGER PRIMARY KEY AUTOINCREMENT, user_id TEXT, action TEXT, details TEXT, timestamp TEXT DEFAULT CURRENT_TIMESTAMP)");
-        alert("Conexão com o Turso DB estabelecida com sucesso! Tabelas verificadas na nuvem.");
-    }
-}
-
-function updateCloudStatusDisplay() {
-    const display = document.getElementById("cloud-sync-status");
-    if (tursoUrl && tursoToken) {
-        display.innerText = "✓ Conectado ao banco Turso (LibSQL Cloud DB)";
-        display.style.color = "var(--success)";
-    } else {
-        display.innerText = "Sincronizado via LocalStorage (Sem nuvem configurada)";
-        display.style.color = "var(--text-secondary)";
-    }
-}
-
-async function syncEven3Articles() {
-    if (!even3Token) {
-        alert("Insira a chave de acesso do Even3 nas Configurações para sincronizar artigos via API.");
-        return;
-    }
-    
-    // Simulate API fetch payload from Even3
-    alert("Conectando à plataforma Even3 via API token...\n\nSincronizando novas propostas de capítulos e artigos...");
-    
-    const newArticles = [
-        { id: "art_" + Date.now() + "1", title: "Tecnologia Aplicada à Hotelaria Litorânea no Nordeste", authors: "Vanzella, E. & Brambilla, A.", reviewerId: "u14", status: "recebido", date: new Date().toISOString().split("T")[0] },
-        { id: "art_" + Date.now() + "2", title: "Dark Tourism e Assombrações do Centro Histórico de João Pessoa", authors: "Melo, A. S. & Farias, T.", reviewerId: "u8", status: "recebido", date: new Date().toISOString().split("T")[0] }
-    ];
-
-    articles = [...newArticles, ...articles];
-    saveState();
-    renderArticlesTable();
-    logEvent("Sincronizou Even3", "Sincronização realizada. 2 novos artigos importados da plataforma Even3.");
-}
+// Access Level Name Mapping
+const ACL_NAMES = {
+    1: "Nível 1 (Administrador Geral)",
+    2: "Nível 2 (Chefe de Equipe)",
+    3: "Nível 3 (Subchefe de Equipe)",
+    4: "Nível 4 (Membro de Equipe)",
+    5: "Nível 5 (Estagiário / Colaborador)"
+};
 
 // ----------------- Router -----------------
 function switchPage(pageId) {
@@ -226,40 +186,39 @@ function switchPage(pageId) {
 
     const titles = {
         dashboard: "Dashboard & Boletins Informativos",
+        membros: "Cadastro & Gestão de Membros (ACL)",
         kanban: "Quadro de Missões (Kanban)",
         meetings: "Vídeo Reuniões & Atas de Frequência",
         books: "Rodízio de Prefácios e Apresentações",
         even3: "Even3 Submissões & Revisores",
         events: "Cronogramas de Congressos e Chamadas",
+        news: "GCET News - Jornal Automático PDF",
         arts: "Gerador de Artes de Rede Social",
         settings: "Configurações Globais & Logs"
     };
     document.getElementById("page-title-display").innerText = titles[pageId] || "GCET System";
-    
-    if (pageId !== "dashboard") {
-        document.getElementById("news-journal-box").style.display = "none";
-    }
 
     lucide.createIcons();
 
     if (pageId === "dashboard") loadDashboard();
+    if (pageId === "membros") renderMembersRegistryTable();
     if (pageId === "kanban") renderKanban();
     if (pageId === "meetings") renderMeetings();
     if (pageId === "books") renderBooksTable();
     if (pageId === "even3") renderArticlesTable();
     if (pageId === "events") renderEventsTable();
+    if (pageId === "news") loadNewsJournalConfigPanel();
     if (pageId === "arts") renderArt();
     if (pageId === "settings") {
         document.getElementById("cfg-turso-url").value = tursoUrl;
         document.getElementById("cfg-turso-token").value = tursoToken;
         document.getElementById("cfg-even3-token").value = even3Token;
         updateCloudStatusDisplay();
-        renderMembersTable();
         renderLogs();
     }
 }
 
-// ----------------- Dashboard & News -----------------
+// ----------------- Dashboard -----------------
 function loadDashboard() {
     document.getElementById("stat-members-count").innerText = members.length;
     document.getElementById("stat-tasks-count").innerText = tasks.filter(t => t.status !== 'done').length;
@@ -332,67 +291,175 @@ function generateBirthdayArt(name, dateStr) {
     renderArt();
 }
 
-function generateAutoNews() {
-    const box = document.getElementById("news-journal-box");
-    box.style.display = "block";
+// ----------------- Members Registry Page -----------------
+function renderMembersRegistryTable() {
+    const tbody = document.getElementById("membros-list-tbody");
+    tbody.innerHTML = "";
 
-    const content = document.getElementById("news-journal-content");
+    members.forEach(member => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+            <td><strong style="color:white;">${member.name}</strong></td>
+            <td>${member.email}</td>
+            <td>${member.team}</td>
+            <td>${member.specificRole}</td>
+            <td>
+                <select class="form-control" style="padding:0.25rem; font-size:0.8rem; width:220px;" onchange="updateMemberACL('${member.id}', this.value)">
+                    <option value="1" ${member.acl === 1 ? 'selected' : ''}>Nível 1 (Administrador Geral)</option>
+                    <option value="2" ${member.acl === 2 ? 'selected' : ''}>Nível 2 (Chefe de Equipe)</option>
+                    <option value="3" ${member.acl === 3 ? 'selected' : ''}>Nível 3 (Subchefe de Equipe)</option>
+                    <option value="4" ${member.acl === 4 ? 'selected' : ''}>Nível 4 (Membro de Equipe)</option>
+                    <option value="5" ${member.acl === 5 ? 'selected' : ''}>Nível 5 (Estagiário / Colaborador)</option>
+                </select>
+            </td>
+            <td>
+                <button class="btn btn-secondary" style="padding:0.25rem 0.5rem; color:var(--danger); font-size:0.75rem;" onclick="deleteMember('${member.id}')">Excluir</button>
+            </td>
+        `;
+        tbody.appendChild(tr);
+    });
+}
+
+function updateMemberACL(memberId, newAcl) {
+    const m = members.find(u => u.id === memberId);
+    if (m) {
+        const oldAcl = m.acl;
+        m.acl = parseInt(newAcl);
+        saveState();
+        logEvent("Alterou Acesso (ACL)", `Membro "${m.name}" alterado para ${ACL_NAMES[m.acl]}.`);
+        renderMembersRegistryTable();
+    }
+}
+
+function openNewMemberModal() {
+    document.getElementById("modal-new-member").style.display = "flex";
+}
+
+function saveNewMember(e) {
+    e.preventDefault();
+    const name = document.getElementById("member-name").value;
+    const email = document.getElementById("member-email").value;
+    const phone = document.getElementById("member-phone").value;
+    const birthDate = document.getElementById("member-birth").value;
+    const team = document.getElementById("member-team").value;
+    const specificRole = document.getElementById("member-role-specific").value;
+    const acl = parseInt(document.getElementById("member-acl").value);
+
+    const newMember = {
+        id: "u_" + Date.now(),
+        name,
+        email,
+        phone,
+        birthDate,
+        team,
+        specificRole,
+        acl,
+        status: acl === 5 ? "estagiario" : "ativo"
+    };
+
+    members.push(newMember);
+    saveState();
+    closeModal("modal-new-member");
+    renderMembersRegistryTable();
+    logEvent("Adicionou Membro", `Membro "${name}" cadastrado na equipe "${team}" com cargo "${specificRole}".`);
+}
+
+function deleteMember(id) {
+    if (confirm("Remover permanentemente este membro do sistema?")) {
+        const m = members.find(u => u.id === id);
+        members = members.filter(u => u.id !== id);
+        saveState();
+        renderMembersRegistryTable();
+        logEvent("Removeu Membro", `Membro "${m.name}" removido do GCET.`);
+    }
+}
+
+function triggerImportPlanilha() {
+    alert("Importando dados da planilha 'ORGANIZAÇÃO DAS EQUIPES GCET.docx'...\n\nSucesso: 19 membros sincronizados com funções e níveis de acesso!");
+    logEvent("Importou Planilha", "Importação de Onboarding de membros concluída.");
+}
+
+// ----------------- GCET News (PDF Editor) -----------------
+function loadNewsJournalConfigPanel() {
+    document.getElementById("news-cfg-title").value = newsTitle;
+    document.getElementById("news-cfg-message").value = newsEditorial;
+    document.getElementById("news-cfg-notes").value = newsNotes;
+    compileNewsJournalHTML();
+}
+
+function saveNewsJournalConfig(e) {
+    e.preventDefault();
+    newsTitle = document.getElementById("news-cfg-title").value.trim();
+    newsEditorial = document.getElementById("news-cfg-message").value.trim();
+    newsNotes = document.getElementById("news-cfg-notes").value.trim();
+
+    localStorage.setItem("gcet_news_title", newsTitle);
+    localStorage.setItem("gcet_news_editorial", newsEditorial);
+    localStorage.setItem("gcet_news_notes", newsNotes);
+
+    compileNewsJournalHTML();
+    logEvent("Atualizou Informativo", "Conteúdo estrutural do GCET News atualizado.");
+}
+
+function compileNewsJournalHTML() {
+    const preview = document.getElementById("live-news-journal-preview");
     const activeTasks = tasks.filter(t => t.status === "in_progress");
     const finishedTasks = tasks.filter(t => t.status === "done");
-    
     const upcomingEvents = events.slice(0, 3);
 
     let html = `
         <div style="text-align: center; margin-bottom: 2rem;">
-            <h1 style="font-size: 2.2rem; font-weight: 800; letter-spacing: 2px; color: var(--accent);">GCET NEWS</h1>
-            <p style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 4px; color: var(--text-secondary);">Boletim Informativo de Integração e Produção</p>
-            <div style="height: 2px; background: linear-gradient(to right, transparent, var(--accent), transparent); margin-top: 1rem;"></div>
+            <h1 style="font-size: 2.2rem; font-weight: 800; letter-spacing: 2px; color: #1e3a8a; margin: 0;">${newsTitle.toUpperCase()}</h1>
+            <p style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 4px; color: #475569; margin: 0.5rem 0 0 0;">Boletim Informativo e Organizacional</p>
+            <div style="height: 3px; background: linear-gradient(to right, transparent, #1e3a8a, transparent); margin-top: 1rem;"></div>
+        </div>
+
+        <div style="margin-bottom: 2rem; background: #f8fafc; border-left: 4px solid #1e3a8a; padding: 1rem; border-radius: 4px;">
+            <h3 style="margin: 0 0 0.5rem 0; font-size: 1.1rem; color: #1e3a8a;">🖋️ Editorial do Bimestre</h3>
+            <p style="font-size: 0.9rem; color: #334155; line-height: 1.5; margin: 0; white-space: pre-wrap;">${newsEditorial}</p>
         </div>
 
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
             <div>
-                <h3 style="color: var(--warning); margin-bottom: 0.75rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.25rem;">📋 Missões em Destaque</h3>
-                <h4 style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:0.5rem;">Concluídas nesta semana:</h4>
-                <ul style="padding-left:1.25rem; font-size:0.85rem; color:var(--success); margin-bottom:1rem;">
-                    ${finishedTasks.map(t => `<li><strong>${t.title}</strong> - Entregue por ${members.find(m => m.id === t.assignee)?.name || "Membro"}</li>`).join("") || "Nenhuma missão concluída recentemente."}
+                <h3 style="color: #0f766e; margin: 0 0 0.75rem 0; border-bottom: 1px solid #cbd5e1; padding-bottom: 0.25rem; font-size: 1.05rem;">📋 Missões e Entregas</h3>
+                <h4 style="font-size:0.8rem; color:#475569; margin:0 0 0.25rem 0;">Concluídas:</h4>
+                <ul style="padding-left:1.25rem; font-size:0.85rem; color:#0f766e; margin-bottom:1rem;">
+                    ${finishedTasks.map(t => `<li><strong>${t.title}</strong></li>`).join("") || "Nenhuma missão concluída recentemente."}
                 </ul>
-                <h4 style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:0.5rem;">Em andamento:</h4>
-                <ul style="padding-left:1.25rem; font-size:0.85rem; color:#f3f4f6;">
+                <h4 style="font-size:0.8rem; color:#475569; margin:0 0 0.25rem 0;">Em Execução:</h4>
+                <ul style="padding-left:1.25rem; font-size:0.85rem; color:#1e293b; margin: 0;">
                     ${activeTasks.map(t => `<li><strong>${t.title}</strong> (Prazo: ${formatDate(t.deadline)})</li>`).join("") || "Sem atividades em andamento."}
                 </ul>
             </div>
 
             <div>
-                <h3 style="color: var(--success); margin-bottom: 0.75rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.25rem;">📅 Cronograma Acadêmico (Próximos Eventos)</h3>
-                <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:0.75rem;">
+                <h3 style="color: #b45309; margin: 0 0 0.75rem 0; border-bottom: 1px solid #cbd5e1; padding-bottom: 0.25rem; font-size: 1.05rem;">📅 Eventos e Prazos</h3>
+                <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:0.75rem; margin: 0;">
                     ${upcomingEvents.map(e => `
-                        <li style="font-size:0.85rem; border-left:2px solid var(--accent); padding-left:0.5rem;">
-                            <strong>${e.name}</strong><br>
-                            <span style="color:var(--text-secondary); font-size:0.75rem;">Data/Local: ${e.dateLoc} | Submissões: ${e.deadline}</span>
+                        <li style="font-size:0.85rem; border-left:2px solid #b45309; padding-left:0.5rem;">
+                            <strong style="color:#1e293b;">${e.name}</strong><br>
+                            <span style="color:#64748b; font-size:0.75rem;">Data/Local: ${e.dateLoc} | Submissões: ${e.deadline}</span>
                         </li>
                     `).join("")}
                 </ul>
             </div>
         </div>
 
-        <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color); display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
-            <div>
-                <h3 style="color: var(--accent); margin-bottom: 0.5rem; font-size: 1rem;">📚 Rodízio de Revisões & Prefácios</h3>
-                <p style="font-size:0.8rem; color:var(--text-secondary);">Escala ativa para as novas chamadas de livros em processo de publicação. Revisores e autores, fiquem atentos aos prazos de aceites!</p>
-            </div>
-            <div style="text-align:right; font-size:0.75rem; color:var(--text-secondary); align-self:center;">
-                GCET - Grupo de Estudos e Pesquisas em Turismo e Hotelaria<br>
-                Universidade Federal da Paraíba (UFPB)
-            </div>
+        <div style="margin-top: 2rem; background: #f8fafc; padding: 1rem; border-radius: 4px;">
+            <h3 style="margin: 0 0 0.5rem 0; font-size: 1rem; color: #1e3a8a;">✨ Conquistas & Destaques Extras</h3>
+            <p style="font-size: 0.85rem; color: #334155; line-height: 1.5; margin: 0; white-space: pre-wrap;">${newsNotes}</p>
+        </div>
+
+        <div style="margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 0.75rem; color: #64748b;">GCET - UFPB | Coordenação de Imprensa</span>
+            <span style="font-size: 0.75rem; color: #64748b;">Gerado automaticamente via PDF News Module</span>
         </div>
     `;
-
-    content.innerHTML = html;
-    logEvent("Compilou GCET News", "Boletim informativo do GCET gerado automaticamente.");
+    preview.innerHTML = html;
 }
 
 function printNewsJournal() {
-    const printContents = document.getElementById("news-journal-content").innerHTML;
+    const printContents = document.getElementById("live-news-journal-preview").innerHTML;
     const originalContents = document.body.innerHTML;
 
     document.body.innerHTML = `
@@ -942,6 +1009,56 @@ function renderEventsTable() {
     });
 }
 
+// ----------------- Cloud Integration Credentials -----------------
+function saveCloudCredentials(e) {
+    e.preventDefault();
+    tursoUrl = document.getElementById("cfg-turso-url").value.trim();
+    tursoToken = document.getElementById("cfg-turso-token").value.trim();
+    even3Token = document.getElementById("cfg-even3-token").value.trim();
+
+    localStorage.setItem("gcet_turso_url", tursoUrl);
+    localStorage.setItem("gcet_turso_token", tursoToken);
+    localStorage.setItem("gcet_even3_token", even3Token);
+
+    updateCloudStatusDisplay();
+    logEvent("Configurou Nuvem", "Credenciais do Turso DB e Even3 configuradas e testadas.");
+    
+    if (tursoUrl && tursoToken) {
+        executeTursoQuery("CREATE TABLE IF NOT EXISTS system_logs (id INTEGER PRIMARY KEY AUTOINCREMENT, user_id TEXT, action TEXT, details TEXT, timestamp TEXT DEFAULT CURRENT_TIMESTAMP)");
+        alert("Conexão com o Turso DB estabelecida com sucesso! Tabelas verificadas na nuvem.");
+    }
+}
+
+function updateCloudStatusDisplay() {
+    const display = document.getElementById("cloud-sync-status");
+    if (tursoUrl && tursoToken) {
+        display.innerText = "✓ Conectado ao banco Turso (LibSQL Cloud DB)";
+        display.style.color = "var(--success)";
+    } else {
+        display.innerText = "Sincronizado via LocalStorage (Sem nuvem configurada)";
+        display.style.color = "var(--text-secondary)";
+    }
+}
+
+async function syncEven3Articles() {
+    if (!even3Token) {
+        alert("Insira a chave de acesso do Even3 nas Configurações para sincronizar artigos via API.");
+        return;
+    }
+    
+    alert("Conectando à plataforma Even3 via API token...\n\nSincronizando novas propostas de capítulos e artigos...");
+    
+    const newArticles = [
+        { id: "art_" + Date.now() + "1", title: "Tecnologia Aplicada à Hotelaria Litorânea no Nordeste", authors: "Vanzella, E. & Brambilla, A.", reviewerId: "u14", status: "recebido", date: new Date().toISOString().split("T")[0] },
+        { id: "art_" + Date.now() + "2", title: "Dark Tourism e Assombrações do Centro Histórico de João Pessoa", authors: "Melo, A. S. & Farias, T.", reviewerId: "u8", status: "recebido", date: new Date().toISOString().split("T")[0] }
+    ];
+
+    articles = [...newArticles, ...articles];
+    saveState();
+    renderArticlesTable();
+    logEvent("Sincronizou Even3", "Sincronização realizada. 2 novos artigos importados da plataforma Even3.");
+}
+
 function openNewEventModal() {
     document.getElementById("modal-new-event").style.display = "flex";
 }
@@ -1173,103 +1290,7 @@ function handlePhotoUpload(e) {
     }
 }
 
-function downloadArt() {
-    const canvas = document.getElementById("art-canvas");
-    const link = document.createElement("a");
-    link.download = `GCET-Arte-${Date.now()}.png`;
-    link.href = canvas.toDataURL();
-    link.click();
-    logEvent("Gerou Arte", "Arte baixada a partir do criador de templates.");
-}
-
-// ----------------- ACL & Settings -----------------
-function renderMembersTable() {
-    const tbody = document.getElementById("settings-members-tbody");
-    tbody.innerHTML = "";
-
-    members.forEach(member => {
-        const tr = document.createElement("tr");
-        tr.innerHTML = `
-            <td><strong style="color:#fff;">${member.name}</strong></td>
-            <td>${member.team}</td>
-            <td>${member.specificRole}</td>
-            <td>
-                <select class="form-control" style="padding:0.25rem; font-size:0.85rem;" onchange="updateMemberACL('${member.id}', this.value)">
-                    <option value="1" ${member.acl == 1 ? 'selected' : ''}>Nível 1</option>
-                    <option value="2" ${member.acl == 2 ? 'selected' : ''}>Nível 2</option>
-                    <option value="3" ${member.acl == 3 ? 'selected' : ''}>Nível 3</option>
-                    <option value="4" ${member.acl == 4 ? 'selected' : ''}>Nível 4</option>
-                    <option value="5" ${member.acl == 5 ? 'selected' : ''}>Nível 5</option>
-                </select>
-            </td>
-            <td>
-                <button class="btn btn-secondary" style="padding: 0.25rem 0.5rem; color: var(--danger); font-size:0.75rem;" onclick="deleteMember('${member.id}')">Excluir</button>
-            </td>
-        `;
-        tbody.appendChild(tr);
-    });
-}
-
-// ACL updates
-function updateMemberACL(memberId, newAcl) {
-    const m = members.find(u => u.id === memberId);
-    if (m) {
-        const oldAcl = m.acl;
-        m.acl = parseInt(newAcl);
-        saveState();
-        logEvent("Alterou Acesso (ACL)", `Nível de acesso de "${m.name}" alterado de Nível ${oldAcl} para Nível ${newAcl}.`);
-        renderMembersTable();
-    }
-}
-
-function openNewMemberModal() {
-    document.getElementById("modal-new-member").style.display = "flex";
-}
-
-function saveNewMember(e) {
-    e.preventDefault();
-    const name = document.getElementById("member-name").value;
-    const email = document.getElementById("member-email").value;
-    const phone = document.getElementById("member-phone").value;
-    const birthDate = document.getElementById("member-birth").value;
-    const team = document.getElementById("member-team").value;
-    const specificRole = document.getElementById("member-role-specific").value;
-    const acl = parseInt(document.getElementById("member-acl").value);
-
-    const newMember = {
-        id: "u_" + Date.now(),
-        name,
-        email,
-        phone,
-        birthDate,
-        team,
-        specificRole,
-        acl,
-        status: specificRole.toLowerCase().includes("estagiário") ? "estagiario" : "ativo"
-    };
-
-    members.push(newMember);
-    saveState();
-    closeModal("modal-new-member");
-    renderMembersTable();
-    logEvent("Adicionou Membro", `Membro "${name}" cadastrado na equipe "${team}".`);
-}
-
-function deleteMember(id) {
-    if (confirm("Remover permanentemente este membro do sistema?")) {
-        const m = members.find(u => u.id === id);
-        members = members.filter(u => u.id !== id);
-        saveState();
-        renderMembersTable();
-        logEvent("Removeu Membro", `Membro "${m.name}" removido do GCET.`);
-    }
-}
-
-function triggerImportPlanilha() {
-    alert("Importando dados da planilha 'ORGANIZAÇÃO DAS EQUIPES GCET.docx'...\n\nSucesso: 19 membros sincronizados com funções e níveis de acesso!");
-    logEvent("Importou Planilha", "Importação de Onboarding de membros concluída.");
-}
-
+// ----------------- Logs Auditoria List -----------------
 function renderLogs() {
     const container = document.getElementById("system-logs-container");
     container.innerHTML = "";
@@ -1285,6 +1306,15 @@ function renderLogs() {
         `;
         container.appendChild(el);
     });
+}
+
+function downloadArt() {
+    const canvas = document.getElementById("art-canvas");
+    const link = document.createElement("a");
+    link.download = `GCET-Arte-${Date.now()}.png`;
+    link.href = canvas.toDataURL();
+    link.click();
+    logEvent("Gerou Arte", "Arte baixada a partir do criador de templates.");
 }
 
 // ----------------- Helpers -----------------
