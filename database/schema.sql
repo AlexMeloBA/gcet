@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS tasks (
     created_at TEXT DEFAULT CURRENT_TIMESTAMP,
     assigned_to TEXT,
     task_type TEXT NOT NULL DEFAULT 'geral' CHECK(task_type IN ('materia', 'estagio', 'geral', 'design')),
-    FOREIGN KEY (assigned_to) REFERENCES users(id) ON SET NULL
+    FOREIGN KEY (assigned_to) REFERENCES users(id) ON DELETE SET NULL
 );
 
 -- Tabela de Controle Editorial de Livros (Rodízio de Prefácio/Apresentação)
