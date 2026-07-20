@@ -3,29 +3,31 @@
 // ----------------- Real Members & Teams Database (extracted from DOCX) -----------------
 const REAL_MEMBERS = [
     // Equipe de Mídias
-    { id: "u1", name: "Felipe Gomes do Nascimento", email: "felipe.gomes@gcet.com", phone: "+55 83 98888-1001", birthDate: "2000-08-25", team: "Mídias", specificRole: "Instagram & Curador", acl: 2, status: "ativo" },
-    { id: "u2", name: "Samuel Ribeiro dos Santos", email: "samuel.ribeiro@gcet.com", phone: "+55 83 98888-1002", birthDate: "1999-07-22", team: "Mídias", specificRole: "Design & GCET News", acl: 4, status: "ativo" },
-    { id: "u3", name: "Amanda Sueli Madeira Pereira", email: "amanda.pereira@gcet.com", phone: "+55 83 98888-1003", birthDate: "2001-05-14", team: "Mídias", specificRole: "Demandas Espontâneas", acl: 4, status: "ativo" },
-    { id: "u4", name: "Ailson da Silva Fernandes", email: "ailson.fernandes@gcet.com", phone: "+55 83 98888-1004", birthDate: "2002-12-05", team: "Mídias", specificRole: "Aniversários e Curiosidades", acl: 5, status: "estagiario" },
-    { id: "u5", name: "Kennedy Kaufummam Costa Mafra", email: "kennedy.mafra@gcet.com", phone: "+55 83 98888-1005", birthDate: "2000-03-30", team: "Mídias", specificRole: "Academia.edu", acl: 4, status: "ativo" },
-    { id: "u6", name: "Leylane Meneses Martins", email: "leylane.martins@gcet.com", phone: "+55 83 98888-1006", birthDate: "2001-10-18", team: "Mídias", specificRole: "Acompanhamento de Projetos e Periódicos", acl: 4, status: "ativo" },
+    { id: "u1", name: "Felipe Gomes do Nascimento", email: "felipe.gomes@gcet.com", phone: "+55 83 98888-1001", birthDate: "2000-08-25", team: "Mídias", specificRole: "Coordenador de Mídias / Instagram / Facebook", acl: 2, status: "ativo" },
+    { id: "u2", name: "Samuel Ribeiro dos Santos", email: "samuel.ribeiro@gcet.com", phone: "+55 83 98888-1002", birthDate: "1999-07-22", team: "Mídias", specificRole: "Design / Instagram / GCET News", acl: 4, status: "ativo" },
+    { id: "u3", name: "Amanda Sueli Madeira Pereira", email: "amanda.pereira@gcet.com", phone: "+55 83 98888-1003", birthDate: "2001-05-14", team: "Mídias", specificRole: "Demandas Espontâneas / Instagram", acl: 4, status: "ativo" },
+    { id: "u4", name: "Ailson da Silva Fernandes", email: "ailson.fernandes@gcet.com", phone: "+55 83 98888-1004", birthDate: "2002-12-05", team: "Mídias", specificRole: "Aniversários / Datas Comemorativas / Diagramação", acl: 5, status: "estagiario" },
+    { id: "u5", name: "Kennedy Kaufummam Costa Mafra", email: "kennedy.mafra@gcet.com", phone: "+55 83 98888-1005", birthDate: "2000-03-30", team: "Mídias", specificRole: "Academia.edu / Planilha de Prefácios", acl: 4, status: "ativo" },
+    { id: "u6", name: "Leylane Meneses Martins", email: "leylane.martins@gcet.com", phone: "+55 83 98888-1006", birthDate: "2001-10-18", team: "Mídias", specificRole: "Projetos e Periódicos", acl: 4, status: "ativo" },
+    { id: "u20", name: "Joyce Silva", email: "joyce.silva@gcet.com", phone: "+55 83 98888-1020", birthDate: "2001-04-03", team: "Mídias", specificRole: "Designer Gráfico (Artes)", acl: 4, status: "ativo" },
     
     // Equipe Institucional / Editorial
-    { id: "u7", name: "Netynha Brambilla", email: "netynha.brambilla@gcet.com", phone: "+55 83 98888-1007", birthDate: "1988-06-15", team: "Editorial", specificRole: "Coordenadora Geral / Organização Chamada", acl: 1, status: "ativo" }, // Nível 1 - Admin Geral
-    { id: "u8", name: "Adriana Brambilla", email: "adriana.brambilla@gcet.com", phone: "+55 83 98888-1008", birthDate: "1985-02-10", team: "Editorial", specificRole: "Comunicação Institucional & Autores", acl: 2, status: "ativo" }, // Nível 2 - Chefe
-    { id: "u9", name: "Eládio Vanzella", email: "eladio.vanzella@gcet.com", phone: "+55 83 98888-1009", birthDate: "1987-11-20", team: "Editorial", specificRole: "Diagramação & Comunicação Autores", acl: 3, status: "ativo" }, // Nível 3 - Subchefe
+    { id: "u7", name: "Netynha Brambilla", email: "netynha.brambilla@gcet.com", phone: "+55 83 98888-1007", birthDate: "1988-06-15", team: "Editorial", specificRole: "Coordenadora Geral / Documentação / Even3", acl: 1, status: "ativo" }, 
+    { id: "u8", name: "Adriana Brambilla", email: "adriana.brambilla@gcet.com", phone: "+55 83 98888-1008", birthDate: "1985-02-10", team: "Editorial", specificRole: "Comunicação Autores / Declarações", acl: 2, status: "ativo" }, 
+    { id: "u9", name: "Eládio Vanzella", email: "eladio.vanzella@gcet.com", phone: "+55 83 98888-1009", birthDate: "1987-11-20", team: "Editorial", specificRole: "Diagramação & Comunicação", acl: 3, status: "ativo" }, 
     { id: "u10", name: "Fernanda Brambilla", email: "fernanda.brambilla@gcet.com", phone: "+55 83 98888-1010", birthDate: "1990-09-08", team: "Editorial", specificRole: "Assessoria Jurídica / Termos de Imagem", acl: 4, status: "ativo" },
     { id: "u11", name: "Daiko Lima e Silva", email: "daiko.silva@gcet.com", phone: "+55 83 98888-1011", birthDate: "1998-04-12", team: "Editorial", specificRole: "Organizador de Pautas", acl: 4, status: "ativo" },
-    { id: "u12", name: "Priscila Fernandes Carvalho de Melo", email: "priscila.melo@gcet.com", phone: "+55 83 98888-1012", birthDate: "2000-01-28", team: "Editorial", specificRole: "Gestora de Atas e Frequência", acl: 3, status: "ativo" },
-    { id: "u13", name: "Islaine Santos", email: "islaine.santos@gcet.com", phone: "+55 83 98888-1013", birthDate: "2002-07-30", team: "Editorial", specificRole: "Controle de Prefácios e Apresentações", acl: 5, status: "estagiario" },
-    { id: "u14", name: "Marília Ferreira Paes Cesário", email: "marilia.cesario@gcet.com", phone: "+55 83 98888-1014", birthDate: "1997-09-24", team: "Editorial", specificRole: "Revisora Acadêmica Principal", acl: 4, status: "ativo" },
+    { id: "u12", name: "Priscila Fernandes Carvalho de Melo", email: "priscila.melo@gcet.com", phone: "+55 83 98888-1012", birthDate: "2000-01-28", team: "Editorial", specificRole: "Atas & Frequência", acl: 3, status: "ativo" },
+    { id: "u13", name: "Islaine Santos", email: "islaine.santos@gcet.com", phone: "+55 83 98888-1013", birthDate: "2002-07-30", team: "Editorial", specificRole: "Acompanhamento de Obras", acl: 5, status: "estagiario" },
+    { id: "u14", name: "Marília Ferreira Paes Cesário", email: "marilia.cesario@gcet.com", phone: "+55 83 98888-1014", birthDate: "1997-09-24", team: "Editorial", specificRole: "Revisora Geral de Normas", acl: 4, status: "ativo" },
     
     // Equipe do Site
-    { id: "u15", name: "Alessandra Souza Queiroz Melo", email: "alessandra.melo@gcet.com", phone: "+55 83 98888-1015", birthDate: "1995-10-05", team: "Site", specificRole: "Coordenadora do Site", acl: 2, status: "ativo" },
-    { id: "u16", name: "Cláudia Araújo de Menezes Gonçalves", email: "claudia.martins@gcet.com", phone: "+55 83 98888-1016", birthDate: "1998-06-30", team: "Site", specificRole: "Redatora de Matérias", acl: 4, status: "ativo" },
-    { id: "u17", name: "Simone Neto de Santana Oliveira", email: "simone.oliveira@gcet.com", phone: "+55 83 98888-1017", birthDate: "1996-03-17", team: "Site", specificRole: "Redatora de Matérias", acl: 4, status: "ativo" },
-    { id: "u18", name: "Thyago da Silva Farias", email: "thyago.farias@gcet.com", phone: "+55 83 98888-1018", birthDate: "1997-12-14", team: "Site", specificRole: "Desenvolvimento Operacional", acl: 3, status: "ativo" },
-    { id: "u19", name: "Alex Souza", email: "alex.souza@gcet.com", phone: "+55 83 98888-1019", birthDate: "1994-11-09", team: "Site", specificRole: "Colaborador Técnico Externo", acl: 4, status: "ativo" }
+    { id: "u15", name: "Alessandra Souza Queiroz Melo", email: "alessandra.melo@gcet.com", phone: "+55 83 98888-1015", birthDate: "1995-10-05", team: "Site", specificRole: "Coordenadora do Site / Operacional", acl: 2, status: "ativo" },
+    { id: "u16", name: "Cláudia Araújo de Menezes Gonçalves", email: "claudia.martins@gcet.com", phone: "+55 83 98888-1016", birthDate: "1998-06-30", team: "Site", specificRole: "Matérias & Divulgação", acl: 4, status: "ativo" },
+    { id: "u17", name: "Simone Neto de Santana Oliveira", email: "simone.oliveira@gcet.com", phone: "+55 83 98888-1017", birthDate: "1996-03-17", team: "Site", specificRole: "Revisora de Redação / Matérias", acl: 4, status: "ativo" },
+    { id: "u18", name: "Thyago da Silva Farias", email: "thyago.farias@gcet.com", phone: "+55 83 98888-1018", birthDate: "1997-12-14", team: "Site", specificRole: "Parte Operacional do Site", acl: 3, status: "ativo" },
+    { id: "u19", name: "Alex Souza", email: "alex.souza@gcet.com", phone: "+55 83 98888-1019", birthDate: "1994-11-09", team: "Site", specificRole: "Colaborador Técnico Externo", acl: 4, status: "ativo" },
+    { id: "u21", name: "Denise Medeiros", email: "denise.medeiros@gcet.com", phone: "+55 83 98888-1021", birthDate: "2000-05-18", team: "Site", specificRole: "Matérias & Formulários", acl: 4, status: "ativo" }
 ];
 
 const REAL_BOOKS = [
@@ -37,7 +39,9 @@ const REAL_BOOKS = [
     { id: "b6", title: "Educação Sem Fronteiras v.1", prefacioUser: "u19", prefacioStatus: "concluido", apresentacaoUser: "u9", apresentacaoStatus: "concluido" },
     { id: "b7", title: "MANUAL PARA TCC", prefacioUser: "u3", prefacioStatus: "pendente", apresentacaoUser: "u3", apresentacaoStatus: "pendente" },
     { id: "b8", title: "ALIMENTAÇÃO & CULTURA: PROCESSOS SOCIAIS", prefacioUser: "u8", prefacioStatus: "concluido", apresentacaoUser: "u9", apresentacaoStatus: "concluido" },
-    { id: "b9", title: "MATEMÁTICA FINANCEIRA: CADERNOS DE AULA", prefacioUser: "u8", prefacioStatus: "pendente", apresentacaoUser: "u9", apresentacaoStatus: "pendente" }
+    { id: "b9", title: "MATEMÁTICA FINANCEIRA: CADERNOS DE AULA", prefacioUser: "u8", prefacioStatus: "pendente", apresentacaoUser: "u9", apresentacaoStatus: "pendente" },
+    { id: "b10", title: "ALIMENTAÇÃO & CULTURA: OFERTA E SEGMENTOS TURÍSTICOS", prefacioUser: "u19", prefacioStatus: "pendente", apresentacaoUser: "u8", apresentacaoStatus: "concluido" },
+    { id: "b11", title: "CULTURA E TURISMO: INTERFACES METODOLÓGICAS NO BRASIL E PORTUGAL", prefacioUser: "u14", prefacioStatus: "concluido", apresentacaoUser: "u9", apresentacaoStatus: "pendente" }
 ];
 
 const REAL_EVENTS = [
@@ -54,10 +58,13 @@ const INITIAL_ARTICLES = [
     { id: "art2", title: "Análise da Acessibilidade nos Museus de João Pessoa", authors: "Gomes, F. & Santos, L.", reviewerId: "u8", status: "recebido", date: "2026-07-15" }
 ];
 
+// Tasks populated using the actual tasks from "PROJETO DE EXTENSÃO AÇÕES E MEMBROS.docx"
 const INITIAL_TASKS = [
-    { id: "t1", title: "Refatorar página de publicações", description: "Colocar links de DOI e estruturação no site institucional.", status: "todo", priority: "alta", type: "geral", assignee: "u18", deadline: "2026-07-28" },
-    { id: "t2", title: "Escrever matéria sobre Gastronomia Social", description: "Cobrir o evento EGS 2025 e impactos do Turismo no Ceará.", status: "in_progress", priority: "media", type: "materia", assignee: "u16", deadline: "2026-07-25" },
-    { id: "t3", title: "Disparar artes de aniversário no Instagram", description: "Postar card de aniversário do Felipe Gomes.", status: "done", priority: "baixa", type: "design", assignee: "u2", deadline: "2026-07-19" }
+    { id: "t1", title: "Operação do Site & Ajuste de Responsividade", description: "Thyago + Alessandra: Ajustar menus e carregamento operacional do site institucional.", status: "todo", priority: "alta", type: "geral", assignee: "u18", deadline: "2026-07-28" },
+    { id: "t2", title: "Redação de Matéria: Chamada de Enoturismo", description: "Cláudia / Denise: Escrever 2 matérias do site sobre eventos de Turismo para divulgação.", status: "in_progress", priority: "media", type: "materia", assignee: "u16", deadline: "2026-07-25" },
+    { id: "t3", title: "Coleta e Envio de Materiais para Academia.edu", description: "Adicionar produções e artigos acadêmicos no perfil do GCET.", status: "todo", priority: "baixa", type: "geral", assignee: "u5", deadline: "2026-07-30" },
+    { id: "t4", title: "Organização técnica e vídeos de YouTube", description: "Planejar mini projetos de palestras por linha de pesquisa no canal.", status: "backlog", priority: "media", type: "geral", assignee: "u2", deadline: "2026-08-05" },
+    { id: "t5", title: "Elaborar termos de cessão de imagem e jurídicos", description: "Fernanda Brambilla: Assessoria jurídica dos termos de cessão de imagem dos novos integrantes.", status: "in_progress", priority: "alta", type: "geral", assignee: "u10", deadline: "2026-07-27" }
 ];
 
 const INITIAL_MEETINGS = [
