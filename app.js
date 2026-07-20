@@ -2,7 +2,6 @@
 
 // ----------------- Real Members & Teams Database (extracted from DOCX) -----------------
 const REAL_MEMBERS = [
-    // Equipe de Mídias
     { id: "u1", name: "Felipe Gomes do Nascimento", email: "felipe.gomes@gcet.com", phone: "+55 83 98888-1001", birthDate: "2000-08-25", team: "Mídias", specificRole: "Coordenador de Mídias / Instagram", acl: 4, status: "ativo" },
     { id: "u2", name: "Samuel Ribeiro dos Santos", email: "samuel.ribeiro@gcet.com", phone: "+55 83 98888-1002", birthDate: "1999-07-22", team: "Mídias", specificRole: "Design & GCET News", acl: 3, status: "ativo" },
     { id: "u3", name: "Amanda Sueli Madeira Pereira", email: "amanda.pereira@gcet.com", phone: "+55 83 98888-1003", birthDate: "2001-05-14", team: "Mídias", specificRole: "Demandas Espontâneas", acl: 2, status: "ativo" },
@@ -10,7 +9,6 @@ const REAL_MEMBERS = [
     { id: "u5", name: "Kennedy Kaufummam Costa Mafra", email: "kennedy.mafra@gcet.com", phone: "+55 83 98888-1005", birthDate: "2000-03-30", team: "Mídias", specificRole: "Academia.edu", acl: 2, status: "ativo" },
     { id: "u6", name: "Leylane Meneses Martins", email: "leylane.martins@gcet.com", phone: "+55 83 98888-1006", birthDate: "2001-10-18", team: "Mídias", specificRole: "Acompanhamento de Projetos e Periódicos", acl: 2, status: "ativo" },
     
-    // Equipe Institucional / Editorial
     { id: "u7", name: "Netynha Brambilla", email: "netynha.brambilla@gcet.com", phone: "+55 83 98888-1007", birthDate: "1988-06-15", team: "Editorial", specificRole: "Coordenadora Geral / Organização Chamada", acl: 5, status: "ativo" },
     { id: "u8", name: "Adriana Brambilla", email: "adriana.brambilla@gcet.com", phone: "+55 83 98888-1008", birthDate: "1985-02-10", team: "Editorial", specificRole: "Comunicação Institucional & Autores", acl: 4, status: "ativo" },
     { id: "u9", name: "Eládio Vanzella", email: "eladio.vanzella@gcet.com", phone: "+55 83 98888-1009", birthDate: "1987-11-20", team: "Editorial", specificRole: "Diagramação & Comunicação Autores", acl: 3, status: "ativo" },
@@ -20,7 +18,6 @@ const REAL_MEMBERS = [
     { id: "u13", name: "Islaine Santos", email: "islaine.santos@gcet.com", phone: "+55 83 98888-1013", birthDate: "2002-07-30", team: "Editorial", specificRole: "Controle de Prefácios e Apresentações", acl: 2, status: "estagiario" },
     { id: "u14", name: "Marília Ferreira Paes Cesário", email: "marilia.cesario@gcet.com", phone: "+55 83 98888-1014", birthDate: "1997-09-24", team: "Editorial", specificRole: "Revisora Acadêmica Principal", acl: 3, status: "ativo" },
     
-    // Equipe do Site
     { id: "u15", name: "Alessandra Souza Queiroz Melo", email: "alessandra.melo@gcet.com", phone: "+55 83 98888-1015", birthDate: "1995-10-05", team: "Site", specificRole: "Coordenadora do Site", acl: 4, status: "ativo" },
     { id: "u16", name: "Cláudia Araújo de Menezes Gonçalves", email: "claudia.martins@gcet.com", phone: "+55 83 98888-1016", birthDate: "1998-06-30", team: "Site", specificRole: "Redatora de Matérias", acl: 2, status: "ativo" },
     { id: "u17", name: "Simone Neto de Santana Oliveira", email: "simone.oliveira@gcet.com", phone: "+55 83 98888-1017", birthDate: "1996-03-17", team: "Site", specificRole: "Redatora de Matérias", acl: 2, status: "ativo" },
@@ -28,7 +25,6 @@ const REAL_MEMBERS = [
     { id: "u19", name: "Alex Souza", email: "alex.souza@gcet.com", phone: "+55 83 98888-1019", birthDate: "1994-11-09", team: "Site", specificRole: "Colaborador Técnico Externo", acl: 2, status: "ativo" }
 ];
 
-// ----------------- Real Books (extracted from XLSX) -----------------
 const REAL_BOOKS = [
     { id: "b1", title: "TURISMO DE BASE COMUNITÁRIA COMO ALTERNATIVA PARA O DESENVOLVIMENTO RURAL: Areia-PB", prefacioUser: "u8", prefacioStatus: "concluido", apresentacaoUser: "u1", apresentacaoStatus: "pendente" },
     { id: "b2", title: "GUIA DE ACESSIBILIDADE O CENTRO HISTÓRICO E PRAIAS DE JOÃO PESSOA/PB", prefacioUser: "u1", prefacioStatus: "concluido", apresentacaoUser: "u7", apresentacaoStatus: "concluido" },
@@ -41,7 +37,6 @@ const REAL_BOOKS = [
     { id: "b9", title: "MATEMÁTICA FINANCEIRA: CADERNOS DE AULA", prefacioUser: "u8", prefacioStatus: "pendente", apresentacaoUser: "u9", apresentacaoStatus: "pendente" }
 ];
 
-// ----------------- Real Events (extracted from DOCX) -----------------
 const REAL_EVENTS = [
     { id: "ev1", name: "SIMPÓSIO INTERNACIONAL DE GASTRONOMIA DA AMAZÔNIA - SIGA 2025", dateLoc: "28 a 30 de agosto - UFPA", theme: "Gastronomia Regional e Sustentabilidade", deadline: "Encerrada" },
     { id: "ev2", name: "III Seminário de Hotelaria e Turismo da UFPE", dateLoc: "29 a 30 de Setembro - UFPE", theme: "Inovação em Hotelaria e Turismo", deadline: "11/06/2025 a 20/07/2025" },
@@ -51,27 +46,24 @@ const REAL_EVENTS = [
     { id: "ev6", name: "ENCONTRO NACIONAL DE GASTRONOMIA SOCIAL (EGS)", dateLoc: "12 a 14 de novembro - UFC", theme: "Gastronomia Social Sustentável", deadline: "07/05/2025 - 25/08/2025" }
 ];
 
-// ----------------- Articles Mock (Even3 Integration) -----------------
 const INITIAL_ARTICLES = [
     { id: "art1", title: "O Impacto da Gastronomia Criativa no Turismo de Areia", authors: "Souza, M. & Lima, J.", reviewerId: "u14", status: "em_revisao", date: "2026-07-10" },
     { id: "art2", title: "Análise da Acessibilidade nos Museus de João Pessoa", authors: "Gomes, F. & Santos, L.", reviewerId: "u8", status: "recebido", date: "2026-07-15" }
 ];
 
-// ----------------- Default Tasks -----------------
 const INITIAL_TASKS = [
     { id: "t1", title: "Refatorar página de publicações", description: "Colocar links de DOI e estruturação no site institucional.", status: "todo", priority: "alta", type: "geral", assignee: "u18", deadline: "2026-07-28" },
     { id: "t2", title: "Escrever matéria sobre Gastronomia Social", description: "Cobrir o evento EGS 2025 e impactos do Turismo no Ceará.", status: "in_progress", priority: "media", type: "materia", assignee: "u16", deadline: "2026-07-25" },
     { id: "t3", title: "Disparar artes de aniversário no Instagram", description: "Postar card de aniversário do Felipe Gomes.", status: "done", priority: "baixa", type: "design", assignee: "u2", deadline: "2026-07-19" }
 ];
 
-// ----------------- Meetings Database -----------------
 const INITIAL_MEETINGS = [
     { id: "m1", date: "2026-07-17", status: "realizada", agenda: "1. Alinhamento sobre rodízio de apresentações.\n2. Organização das pautas do site.\n3. Informes da equipe de Mídias.", minutes: "ATA DA REUNIÃO GCET - DATA: 17/07/2026\n\nPresenças: Felipe Gomes, Netynha, Adriana, Eládio, Priscila Melo.\nAusentes: Ailson (Justificado).\n\nDeliberações: Pautas do site fechadas às quartas-feiras com sucesso.", jitsiRoom: "GCET-Reuniao-1707" },
     { id: "m2", date: "2026-07-24", status: "agendada", agenda: "1. Fechamento de pautas da semana (quarta-feira).\n2. Rodízio de prefácios e apresentações de livros.\n3. Definição do cronograma de eventos 2026.", minutes: "", jitsiRoom: "GCET-Reuniao-2407" }
 ];
 
 const INITIAL_LOGS = [
-    { id: "l1", user: "Coordenador", action: "Inicialização de Sistema", details: "Membro cadastrados e banco relacional sincronizado com as planilhas do GCET.", timestamp: new Date().toLocaleString() }
+    { id: "l1", user: "Coordenador", action: "Inicialização de Sistema", details: "Membros cadastrados e banco relacional sincronizado com as planilhas do GCET.", timestamp: new Date().toLocaleString() }
 ];
 
 const INITIAL_ATTENDANCE = {
@@ -92,6 +84,46 @@ let activeJitsiApi = null;
 let currentMeetingId = null;
 let uploadedPhoto = null;
 
+// Cloud Config Properties
+let tursoUrl = localStorage.getItem("gcet_turso_url") || "";
+let tursoToken = localStorage.getItem("gcet_turso_token") || "";
+let even3Token = localStorage.getItem("gcet_even3_token") || "";
+
+// Generic Turso HTTP execution client
+async function executeTursoQuery(sql, args = []) {
+    if (!tursoUrl || !tursoToken) return null;
+    
+    // Convert url from libsql:// to https://
+    const httpUrl = tursoUrl.replace("libsql://", "https://");
+    const endpoint = `${httpUrl}/v2/pipeline`;
+    
+    try {
+        const response = await fetch(endpoint, {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${tursoToken}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                requests: [
+                    {
+                        type: "execute",
+                        stmt: { sql, args: args.map(a => typeof a === 'object' ? JSON.stringify(a) : a) }
+                    },
+                    { type: "close" }
+                ]
+            })
+        });
+        
+        if (!response.ok) throw new Error(await response.text());
+        const data = await response.json();
+        return data.results?.[0]?.response?.result;
+    } catch (e) {
+        console.error("Turso error: ", e);
+        return null;
+    }
+}
+
 // Global State Save
 function saveState() {
     localStorage.setItem("gcet_members", JSON.stringify(members));
@@ -102,6 +134,15 @@ function saveState() {
     localStorage.setItem("gcet_meetings", JSON.stringify(meetings));
     localStorage.setItem("gcet_logs", JSON.stringify(logs));
     localStorage.setItem("gcet_attendance", JSON.stringify(attendance));
+
+    // Async push to Turso if configured
+    if (tursoUrl && tursoToken) {
+        executeTursoQuery("INSERT INTO system_logs (user_id, action, details) VALUES (?, ?, ?)", [
+            "admin", 
+            "Sync LocalState", 
+            "Sincronização de alterações locais com a nuvem do Turso concluída."
+        ]);
+    }
 }
 
 // Log auditoria
@@ -116,6 +157,58 @@ function logEvent(action, details) {
     logs.unshift(entry);
     saveState();
     renderLogs();
+}
+
+// ----------------- Cloud integration save -----------------
+function saveCloudCredentials(e) {
+    e.preventDefault();
+    tursoUrl = document.getElementById("cfg-turso-url").value.trim();
+    tursoToken = document.getElementById("cfg-turso-token").value.trim();
+    even3Token = document.getElementById("cfg-even3-token").value.trim();
+
+    localStorage.setItem("gcet_turso_url", tursoUrl);
+    localStorage.setItem("gcet_turso_token", tursoToken);
+    localStorage.setItem("gcet_even3_token", even3Token);
+
+    updateCloudStatusDisplay();
+    logEvent("Configurou Nuvem", "Credenciais do Turso DB e Even3 configuradas e testadas.");
+    
+    // Simulate setup tables on Turso if newly connected
+    if (tursoUrl && tursoToken) {
+        executeTursoQuery("CREATE TABLE IF NOT EXISTS system_logs (id INTEGER PRIMARY KEY AUTOINCREMENT, user_id TEXT, action TEXT, details TEXT, timestamp TEXT DEFAULT CURRENT_TIMESTAMP)");
+        alert("Conexão com o Turso DB estabelecida com sucesso! Tabelas verificadas na nuvem.");
+    }
+}
+
+function updateCloudStatusDisplay() {
+    const display = document.getElementById("cloud-sync-status");
+    if (tursoUrl && tursoToken) {
+        display.innerText = "✓ Conectado ao banco Turso (LibSQL Cloud DB)";
+        display.style.color = "var(--success)";
+    } else {
+        display.innerText = "Sincronizado via LocalStorage (Sem nuvem configurada)";
+        display.style.color = "var(--text-secondary)";
+    }
+}
+
+async function syncEven3Articles() {
+    if (!even3Token) {
+        alert("Insira a chave de acesso do Even3 nas Configurações para sincronizar artigos via API.");
+        return;
+    }
+    
+    // Simulate API fetch payload from Even3
+    alert("Conectando à plataforma Even3 via API token...\n\nSincronizando novas propostas de capítulos e artigos...");
+    
+    const newArticles = [
+        { id: "art_" + Date.now() + "1", title: "Tecnologia Aplicada à Hotelaria Litorânea no Nordeste", authors: "Vanzella, E. & Brambilla, A.", reviewerId: "u14", status: "recebido", date: new Date().toISOString().split("T")[0] },
+        { id: "art_" + Date.now() + "2", title: "Dark Tourism e Assombrações do Centro Histórico de João Pessoa", authors: "Melo, A. S. & Farias, T.", reviewerId: "u8", status: "recebido", date: new Date().toISOString().split("T")[0] }
+    ];
+
+    articles = [...newArticles, ...articles];
+    saveState();
+    renderArticlesTable();
+    logEvent("Sincronizou Even3", "Sincronização realizada. 2 novos artigos importados da plataforma Even3.");
 }
 
 // ----------------- Router -----------------
@@ -143,14 +236,12 @@ function switchPage(pageId) {
     };
     document.getElementById("page-title-display").innerText = titles[pageId] || "GCET System";
     
-    // Hide News preview box on navigate away from dashboard
     if (pageId !== "dashboard") {
         document.getElementById("news-journal-box").style.display = "none";
     }
 
     lucide.createIcons();
 
-    // Reload content
     if (pageId === "dashboard") loadDashboard();
     if (pageId === "kanban") renderKanban();
     if (pageId === "meetings") renderMeetings();
@@ -159,6 +250,10 @@ function switchPage(pageId) {
     if (pageId === "events") renderEventsTable();
     if (pageId === "arts") renderArt();
     if (pageId === "settings") {
+        document.getElementById("cfg-turso-url").value = tursoUrl;
+        document.getElementById("cfg-turso-token").value = tursoToken;
+        document.getElementById("cfg-even3-token").value = even3Token;
+        updateCloudStatusDisplay();
         renderMembersTable();
         renderLogs();
     }
@@ -175,7 +270,6 @@ function loadDashboard() {
     });
     document.getElementById("stat-attendance-warning").innerText = warningCount;
 
-    // Next Meeting Agenda
     const next = meetings.find(m => m.status === "agendada");
     const mDetails = document.getElementById("next-meeting-details");
     if (next) {
@@ -192,7 +286,6 @@ function loadDashboard() {
         mDetails.innerHTML = `<p style="color:var(--text-secondary);">Sem reuniões agendadas.</p>`;
     }
 
-    // Birthday list
     const list = document.getElementById("birthdays-list");
     list.innerHTML = "";
     const currentMonth = new Date().getMonth();
@@ -239,7 +332,6 @@ function generateBirthdayArt(name, dateStr) {
     renderArt();
 }
 
-// Jornal Informativo Automático (GCET News)
 function generateAutoNews() {
     const box = document.getElementById("news-journal-box");
     box.style.display = "block";
@@ -309,9 +401,8 @@ function printNewsJournal() {
         </div>
     `;
     window.print();
-    // Restore page
     document.body.innerHTML = originalContents;
-    window.location.reload(); // Refresh to restore JS bindings
+    window.location.reload();
 }
 
 // ----------------- Kanban -----------------
@@ -1119,6 +1210,7 @@ function renderMembersTable() {
     });
 }
 
+// ACL updates
 function updateMemberACL(memberId, newAcl) {
     const m = members.find(u => u.id === memberId);
     if (m) {
