@@ -1,0 +1,8 @@
+# Ignore big document files and extracted zip directories
+*.zip
+*.docx
+Pasta  GCET/
+/scratch/
+.system_generated/
+*.log
+*.txt

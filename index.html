@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GCET Management System</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Style -->
+    <link rel="stylesheet" href="index.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Jitsi Meet API -->
+    <script src="https://meet.jit.si/external_api.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo-container">
+                <div class="logo-icon">G</div>
+                <div class="logo-text">GCET System</div>
+            </div>
+            <nav style="flex: 1; overflow-y: auto; padding-right: 4px;">
+                <ul class="nav-links">
+                    <li><a class="nav-item active" onclick="switchPage('dashboard')"><i data-lucide="layout-dashboard" class="nav-icon"></i> Dashboard</a></li>
+                    <li><a class="nav-item" onclick="switchPage('kanban')"><i data-lucide="kanban" class="nav-icon"></i> Quadro Kanban</a></li>
+                    <li><a class="nav-item" onclick="switchPage('meetings')"><i data-lucide="users" class="nav-icon"></i> Reuniões & Atas</a></li>
+                    <li><a class="nav-item" onclick="switchPage('books')"><i data-lucide="book-open" class="nav-icon"></i> Rodízio de Livros</a></li>
+                    <li><a class="nav-item" onclick="switchPage('even3')"><i data-lucide="award" class="nav-icon"></i> Even3 Artigos</a></li>
+                    <li><a class="nav-item" onclick="switchPage('events')"><i data-lucide="calendar" class="nav-icon"></i> Cronogramas</a></li>
+                    <li><a class="nav-item" onclick="switchPage('arts')"><i data-lucide="palette" class="nav-icon"></i> Gerador de Artes</a></li>
+                    <li><a class="nav-item" onclick="switchPage('settings')"><i data-lucide="settings" class="nav-icon"></i> Configurações & Logs</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Workspace -->
+        <main class="main-content">
+            <!-- App Header -->
+            <header class="app-header">
+                <div class="header-title">
+                    <h1 id="page-title-display">Dashboard</h1>
+                </div>
+                <div class="user-profile">
+                    <div class="user-info">
+                        <span class="username">Coordenador GCET</span>
+                        <span class="user-role">Nível 5 (Administrador)</span>
+                    </div>
+                    <div class="avatar">AD</div>
+                </div>
+            </header>
+
+            <!-- DASHBOARD PAGE -->
+            <section id="page-dashboard" class="page-container active">
+                <div class="dashboard-grid">
+                    <div class="glass-card stat-card">
+                        <div class="stat-icon" style="background-color: var(--accent-glow); color: var(--accent);">
+                            <i data-lucide="users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="stat-members-count">0</h3>
+                            <p>Membros Ativos</p>
+                        </div>
+                    </div>
+                    <div class="glass-card stat-card">
+                        <div class="stat-icon" style="background-color: rgba(16, 185, 129, 0.15); color: var(--success);">
+                            <i data-lucide="check-square"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="stat-tasks-count">0</h3>
+                            <p>Missões Pendentes</p>
+                        </div>
+                    </div>
+                    <div class="glass-card stat-card">
+                        <div class="stat-icon" style="background-color: rgba(239, 68, 68, 0.15); color: var(--danger);">
+                            <i data-lucide="alert-triangle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="stat-attendance-warning">0</h3>
+                            <p>Alertas de Ausência (>25%)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+                    <!-- Proxima Reunião -->
+                    <div class="glass-card">
+                        <h2 style="font-size: 1.1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; color: var(--accent);">
+                            <i data-lucide="calendar"></i> Próxima Reunião (Sexta-feira)
+                        </h2>
+                        <div id="next-meeting-details">
+                            <!-- Injected -->
+                        </div>
+                        <div style="margin-top: 1rem; display: flex; gap: 0.75rem;">
+                            <button class="btn btn-primary" onclick="switchPage('meetings')">Ir para Reuniões</button>
+                            <button class="btn btn-secondary" onclick="generateAutoNews()"><i data-lucide="newspaper"></i> GCET News Jornal</button>
+                        </div>
+                    </div>
+
+                    <!-- Aniversariantes do Mês -->
+                    <div class="glass-card">
+                        <h2 style="font-size: 1.1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; color: var(--warning);">
+                            <i data-lucide="gift"></i> Aniversariantes do Mês
+                        </h2>
+                        <div id="birthdays-list" style="display: flex; flex-direction: column; gap: 0.75rem; max-height: 250px; overflow-y: auto;">
+                            <!-- Injected -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GCET News Jornal Automático Preview Section -->
+                <div class="glass-card" id="news-journal-box" style="display: none; margin-top: 1.5rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">
+                        <h2 style="font-size: 1.2rem; color: var(--success); font-weight: 700; display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="newspaper"></i> GCET News - Boletim do Grupo</h2>
+                        <button class="btn btn-secondary" onclick="printNewsJournal()"><i data-lucide="printer"></i> Imprimir / PDF</button>
+                    </div>
+                    <div id="news-journal-content" style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: 8px; padding: 2rem; color: #f3f4f6; font-family: 'Inter', sans-serif;">
+                        <!-- Auto-generated content goes here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- KANBAN BOARD PAGE -->
+            <section id="page-kanban" class="page-container">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                    <p style="color: var(--text-secondary);">Organize e gerencie tarefas, prazos de matérias (5 dias) e estagiários do GCET.</p>
+                    <div style="display: flex; gap: 0.75rem;">
+                        <button class="btn btn-secondary" onclick="triggerNotifyEstagiarios()"><i data-lucide="bell"></i> Cobrar Estagiários</button>
+                        <button class="btn btn-primary" onclick="openNewTaskModal()"><i data-lucide="plus"></i> Nova Missão</button>
+                    </div>
+                </div>
+                <div class="kanban-board">
+                    <!-- Column: Backlog -->
+                    <div class="kanban-column" id="col-backlog" ondragover="allowDrop(event)" ondrop="drop(event, 'backlog')">
+                        <div class="column-header">
+                            <span class="column-title"><span style="width: 8px; height: 8px; border-radius: 50%; background-color: var(--text-secondary);"></span> Backlog</span>
+                            <span class="badge" style="background-color: rgba(255,255,255,0.05);" id="count-backlog">0</span>
+                        </div>
+                        <div class="task-list" id="list-backlog"></div>
+                    </div>
+
+                    <!-- Column: To Do -->
+                    <div class="kanban-column" id="col-todo" ondragover="allowDrop(event)" ondrop="drop(event, 'todo')">
+                        <div class="column-header">
+                            <span class="column-title"><span style="width: 8px; height: 8px; border-radius: 50%; background-color: var(--accent);"></span> A Fazer</span>
+                            <span class="badge" style="background-color: rgba(255,255,255,0.05);" id="count-todo">0</span>
+                        </div>
+                        <div class="task-list" id="list-todo"></div>
+                    </div>
+
+                    <!-- Column: In Progress -->
+                    <div class="kanban-column" id="col-in_progress" ondragover="allowDrop(event)" ondrop="drop(event, 'in_progress')">
+                        <div class="column-header">
+                            <span class="column-title"><span style="width: 8px; height: 8px; border-radius: 50%; background-color: var(--warning);"></span> Em Progresso</span>
+                            <span class="badge" style="background-color: rgba(255,255,255,0.05);" id="count-in_progress">0</span>
+                        </div>
+                        <div class="task-list" id="list-in_progress"></div>
+                    </div>
+
+                    <!-- Column: Done -->
+                    <div class="kanban-column" id="col-done" ondragover="allowDrop(event)" ondrop="drop(event, 'done')">
+                        <div class="column-header">
+                            <span class="column-title"><span style="width: 8px; height: 8px; border-radius: 50%; background-color: var(--success);"></span> Concluído</span>
+                            <span class="badge" style="background-color: rgba(255,255,255,0.05);" id="count-done">0</span>
+                        </div>
+                        <div class="task-list" id="list-done"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MEETINGS & ATTENDANCE PAGE -->
+            <section id="page-meetings" class="page-container">
+                <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 2rem; margin-bottom: 2rem;">
+                    <!-- Schedule / List -->
+                    <div class="glass-card">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 1rem; align-items: center;">
+                            <h2 style="font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem; color: var(--accent);"><i data-lucide="calendar"></i> Reuniões</h2>
+                            <button class="btn btn-primary" onclick="openNewMeetingModal()"><i data-lucide="plus"></i> Agendar Reunião</button>
+                        </div>
+                        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 1rem;">As pautas fecham automaticamente toda quarta-feira. Reuniões às sextas-feiras.</p>
+                        <div id="meetings-list-container" style="display: flex; flex-direction: column; gap: 1rem; max-height: 450px; overflow-y: auto;">
+                            <!-- Meetings Inject -->
+                        </div>
+                    </div>
+
+                    <!-- Live Meeting Room / Actions -->
+                    <div class="glass-card" id="meeting-details-box">
+                        <h2 style="font-size: 1.1rem; margin-bottom: 1rem;" id="meeting-box-title">Detalhes da Reunião</h2>
+                        <div id="meeting-box-content">
+                            <p style="color: var(--text-secondary);">Selecione uma reunião na lista para gerenciar presença, videoconferência e atas.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Call Section (Embedded Jitsi) -->
+                <div class="glass-card" id="video-call-box" style="display: none; margin-top: 1.5rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h2 style="font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="video"></i> Vídeo Chamada Integrada (Jitsi Meet)</h2>
+                        <button class="btn btn-secondary" onclick="closeVideoCall()">Sair da Chamada</button>
+                    </div>
+                    <div id="jitsi-container"></div>
+                </div>
+            </section>
+
+            <!-- RODÍZIO DE LIVROS PAGE -->
+            <section id="page-books" class="page-container">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                    <p style="color: var(--text-secondary);">Escala e controle de rodízio de prefácios, apresentações e revisões de livros entre membros.</p>
+                    <button class="btn btn-primary" onclick="openNewBookModal()"><i data-lucide="plus"></i> Lançar Livro</button>
+                </div>
+
+                <div class="glass-card" style="margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.1rem; margin-bottom: 1rem; color: var(--accent);"><i data-lucide="book-open"></i> Obras do GCET & Status do Rodízio</h3>
+                    <div style="overflow-x: auto;">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Nome do Livro</th>
+                                    <th>Responsável Prefácio</th>
+                                    <th>Status Prefácio</th>
+                                    <th>Responsável Apresentação</th>
+                                    <th>Status Apresentação</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="books-list-tbody">
+                                <!-- Dynamic Books Inject -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- EVEN3 ARTIGOS PAGE -->
+            <section id="page-even3" class="page-container">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                    <p style="color: var(--text-secondary);">Gerenciamento de artigos recebidos pelo Even3, cadastro e atribuição de revisores.</p>
+                    <button class="btn btn-primary" onclick="openNewArticleModal()"><i data-lucide="plus"></i> Cadastrar Artigo</button>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 1.5rem;">
+                    <!-- Artigos list -->
+                    <div class="glass-card">
+                        <h3 style="font-size: 1.1rem; margin-bottom: 1rem; color: var(--accent);"><i data-lucide="file-text"></i> Submissões de Artigos</h3>
+                        <div style="overflow-x: auto;">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Título do Artigo</th>
+                                        <th>Autores</th>
+                                        <th>Revisor Responsável</th>
+                                        <th>Status</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="articles-list-tbody">
+                                    <!-- Injected -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Informes e Comunicação com Revisores -->
+                    <div class="glass-card">
+                        <h3 style="font-size: 1.1rem; margin-bottom: 1rem; color: var(--warning);"><i data-lucide="mail"></i> Cobranças & Diretrizes</h3>
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div style="background: rgba(255,255,255,0.02); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                                <h4 style="font-size:0.9rem; font-weight:600; margin-bottom:0.5rem; display:flex; align-items:center; gap:0.25rem;"><i data-lucide="info" style="width:14px; color:var(--accent);"></i> Diretrizes de Inteligência Artificial</h4>
+                                <p style="font-size: 0.8rem; color: var(--text-secondary);">Revisores devem atentar a plágio e uso inadequado de IA generativa em propostas.</p>
+                            </div>
+                            <div style="background: rgba(255,255,255,0.02); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                                <h4 style="font-size:0.9rem; font-weight:600; margin-bottom:0.5rem;">Cobrança Automática</h4>
+                                <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 1rem;">Gere templates de e-mail ou WhatsApp para cobrar revisores pendentes.</p>
+                                <button class="btn btn-secondary" style="width: 100%; justify-content: center;" onclick="generateRevisorReminderText()"><i data-lucide="message-square"></i> Gerar Texto de Cobrança</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reminder template container -->
+                <div class="glass-card" id="reminder-output-box" style="display:none; margin-top:1.5rem;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+                        <h4 style="font-size:1rem; font-weight:700;">Mensagem de Cobrança / Notificação</h4>
+                        <button class="btn btn-secondary" style="padding:0.25rem 0.5rem; font-size:0.8rem;" onclick="copyReminderText()">Copiar Texto</button>
+                    </div>
+                    <textarea id="reminder-text-area" class="form-control" rows="8"></textarea>
+                </div>
+            </section>
+
+            <!-- EVENTS CRONOGRAMAS PAGE -->
+            <section id="page-events" class="page-container">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                    <p style="color: var(--text-secondary);">Calendário e cronograma de congressos, eventos, chamadas de livros e projetos de extensão de Turismo & Hotelaria.</p>
+                    <button class="btn btn-primary" onclick="openNewEventModal()"><i data-lucide="plus"></i> Novo Evento</button>
+                </div>
+
+                <div class="glass-card">
+                    <h3 style="font-size: 1.1rem; margin-bottom: 1rem; color: var(--accent);"><i data-lucide="calendar"></i> Cronograma de Eventos Acadêmicos</h3>
+                    <div style="overflow-x: auto;">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Evento</th>
+                                    <th>Data e Local</th>
+                                    <th>Temática</th>
+                                    <th>Prazo Submissão</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="events-list-tbody">
+                                <!-- Injected -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ART GENERATOR PAGE -->
+            <section id="page-arts" class="page-container">
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Gere automaticamente artes para redes sociais de acordo com os padrões visuais do GCET.</p>
+                
+                <div class="graphics-maker-layout">
+                    <!-- Controls -->
+                    <div class="glass-card">
+                        <h3 style="font-size: 1rem; margin-bottom: 1.25rem;">Opções do Template</h3>
+                        
+                        <div class="form-group">
+                            <label>Tipo de Arte</label>
+                            <select id="art-template-select" class="form-control" onchange="renderArt()">
+                                <option value="birthday">Aniversário do Membro</option>
+                                <option value="news">GCET News Informativo</option>
+                                <option value="event">Chamada de Eventos / Projetos</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Nome do Membro / Título</label>
+                            <input type="text" id="art-text-name" class="form-control" value="Felipe Gomes" oninput="renderArt()">
+                        </div>
+
+                        <div class="form-group" id="birthday-date-group">
+                            <label>Data Comemorativa / Subtítulo</label>
+                            <input type="text" id="art-text-date" class="form-control" value="25 de Julho" oninput="renderArt()">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Carregar Foto (Para Aniversários)</label>
+                            <input type="file" id="art-photo-upload" class="form-control" accept="image/*" onchange="handlePhotoUpload(event)">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Cor do Tema</label>
+                            <input type="color" id="art-color-theme" class="form-control" value="#3b82f6" style="height: 40px; padding: 2px;" onchange="renderArt()">
+                        </div>
+
+                        <button class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 1rem;" onclick="downloadArt()">
+                            <i data-lucide="download"></i> Baixar Arte (.png)
+                        </button>
+                    </div>
+
+                    <!-- Canvas Box -->
+                    <div class="canvas-preview-container">
+                        <canvas id="art-canvas" width="800" height="800"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SETTINGS & AUDIT LOGS PAGE -->
+            <section id="page-settings" class="page-container">
+                <div style="display: grid; grid-template-columns: 1.6fr 1fr; gap: 2rem;">
+                    <!-- Membros e ACL -->
+                    <div class="glass-card">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                            <h2 style="font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem; color: var(--accent);"><i data-lucide="shield-check"></i> Gestão de Equipes & Níveis de Acesso (ACL)</h2>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-secondary" onclick="triggerImportPlanilha()"><i data-lucide="upload"></i> Importar Planilha</button>
+                                <button class="btn btn-primary" onclick="openNewMemberModal()"><i data-lucide="user-plus"></i> Novo Membro</button>
+                            </div>
+                        </div>
+                        <div style="overflow-x: auto; max-height: 450px; overflow-y: auto;">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>Equipe</th>
+                                        <th>Função Específica</th>
+                                        <th>Nível (ACL)</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="settings-members-tbody">
+                                    <!-- Dynamic Members Inject -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Audit Logs -->
+                    <div class="glass-card">
+                        <h2 style="font-size: 1.1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; color: var(--danger);">
+                            <i data-lucide="activity"></i> Logs do Sistema (Auditoria)
+                        </h2>
+                        <div id="system-logs-container" style="display: flex; flex-direction: column; gap: 0.75rem; max-height: 450px; overflow-y: auto; font-size: 0.8rem; font-family: monospace;">
+                            <!-- System Logs Inject -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- MODAL: NOVA MISSÃO (KANBAN) -->
+    <div class="modal-overlay" id="modal-new-task">
+        <div class="glass-card modal-content">
+            <h3 style="margin-bottom: 1.5rem; font-size: 1.1rem;">Nova Missão (Kanban)</h3>
+            <form onsubmit="saveNewTask(event)">
+                <div class="form-group">
+                    <label>Título da Missão</label>
+                    <input type="text" id="task-title" class="form-control" required placeholder="Ex: Redigir matéria sobre evento X">
+                </div>
+                <div class="form-group">
+                    <label>Descrição</label>
+                    <textarea id="task-desc" class="form-control" rows="3" placeholder="Insira os detalhes..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Tipo de Missão</label>
+                    <select id="task-type" class="form-control" onchange="toggleTaskDeadlineRule(this.value)">
+                        <option value="geral">Geral</option>
+                        <option value="materia">Matéria (Gera prazo automático de 5 dias)</option>
+                        <option value="estagio">Missão de Estagiário</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Responsável</label>
+                    <select id="task-assignee" class="form-control" required>
+                        <!-- Injected dynamically -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Prazo de Entrega</label>
+                    <input type="date" id="task-deadline" class="form-control" required>
+                </div>
+                <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('modal-new-task')">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Salvar Missão</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: NOVA REUNIÃO -->
+    <div class="modal-overlay" id="modal-new-meeting">
+        <div class="glass-card modal-content">
+            <h3 style="margin-bottom: 1.5rem; font-size: 1.1rem;">Agendar Reunião</h3>
+            <form onsubmit="saveNewMeeting(event)">
+                <div class="form-group">
+                    <label>Data da Reunião</label>
+                    <input type="date" id="meeting-date" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Pauta da Reunião (Markdown)</label>
+                    <textarea id="meeting-agenda" class="form-control" rows="4" placeholder="Adicione a pauta contínua da semana aqui..."></textarea>
+                </div>
+                <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('modal-new-meeting')">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Salvar Reunião</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: NOVO MEMBRO -->
+    <div class="modal-overlay" id="modal-new-member">
+        <div class="glass-card modal-content">
+            <h3 style="margin-bottom: 1.5rem; font-size: 1.1rem;">Adicionar Novo Membro</h3>
+            <form onsubmit="saveNewMember(event)">
+                <div class="form-group">
+                    <label>Nome Completo</label>
+                    <input type="text" id="member-name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>E-mail institucional/pessoal</label>
+                    <input type="email" id="member-email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Telefone / WhatsApp</label>
+                    <input type="text" id="member-phone" class="form-control" placeholder="+55 ...">
+                </div>
+                <div class="form-group">
+                    <label>Data de Nascimento</label>
+                    <input type="date" id="member-birth" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Equipe</label>
+                    <select id="member-team" class="form-control">
+                        <option value="Site">Equipe do Site</option>
+                        <option value="Editorial">Equipe Editorial</option>
+                        <option value="Mídias">Equipe das Mídias</option>
+                        <option value="Comissão">Comissão</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Função Específica</label>
+                    <input type="text" id="member-role-specific" class="form-control" placeholder="Ex: Revisor Chefe" required>
+                </div>
+                <div class="form-group">
+                    <label>Nível de Acesso (ACL)</label>
+                    <select id="member-acl" class="form-control">
+                        <option value="1">Nível 1 (Visualizador)</option>
+                        <option value="2">Nível 2 (Membro Geral)</option>
+                        <option value="3">Nível 3 (Editor/Gerenciador de Atividades)</option>
+                        <option value="4">Nível 4 (Coordenador de Equipe)</option>
+                        <option value="5">Nível 5 (Administrador Geral)</option>
+                    </select>
+                </div>
+                <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('modal-new-member')">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Salvar Membro</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: LANÇAR LIVRO -->
+    <div class="modal-overlay" id="modal-new-book">
+        <div class="glass-card modal-content">
+            <h3 style="margin-bottom: 1.5rem; font-size: 1.1rem;">Lançar Novo Livro</h3>
+            <form onsubmit="saveNewBook(event)">
+                <div class="form-group">
+                    <label>Título do Livro</label>
+                    <input type="text" id="book-title" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Responsável pelo Prefácio</label>
+                    <select id="book-prefacio-user" class="form-control" required></select>
+                </div>
+                <div class="form-group">
+                    <label>Responsável pela Apresentação</label>
+                    <select id="book-apresentacao-user" class="form-control" required></select>
+                </div>
+                <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('modal-new-book')">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Lançar Obra</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: CADASTRAR ARTIGO -->
+    <div class="modal-overlay" id="modal-new-article">
+        <div class="glass-card modal-content">
+            <h3 style="margin-bottom: 1.5rem; font-size: 1.1rem;">Cadastrar Novo Artigo (Even3)</h3>
+            <form onsubmit="saveNewArticle(event)">
+                <div class="form-group">
+                    <label>Título do Artigo</label>
+                    <input type="text" id="article-title" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Autores</label>
+                    <input type="text" id="article-authors" class="form-control" required placeholder="Nomes separados por vírgula">
+                </div>
+                <div class="form-group">
+                    <label>Revisor Atribuído</label>
+                    <select id="article-reviewer" class="form-control" required></select>
+                </div>
+                <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('modal-new-article')">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Salvar Artigo</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: NOVO EVENTO -->
+    <div class="modal-overlay" id="modal-new-event">
+        <div class="glass-card modal-content">
+            <h3 style="margin-bottom: 1.5rem; font-size: 1.1rem;">Lançar Evento / Congresso</h3>
+            <form onsubmit="saveNewEvent(event)">
+                <div class="form-group">
+                    <label>Nome do Evento</label>
+                    <input type="text" id="event-name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Data e Local</label>
+                    <input type="text" id="event-date-loc" class="form-control" required placeholder="Ex: 28 a 30 de Agosto - UFPA">
+                </div>
+                <div class="form-group">
+                    <label>Temática</label>
+                    <input type="text" id="event-theme" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Prazo de Submissão</label>
+                    <input type="text" id="event-deadline" class="form-control" required placeholder="Ex: Até 20/07/2026">
+                </div>
+                <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('modal-new-event')">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Cadastrar Evento</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Script de Negócios e Interatividade -->
+    <script src="app.js"></script>
+</body>
+</html>
